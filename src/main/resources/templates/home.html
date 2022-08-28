@@ -13,7 +13,23 @@
 </head>
   <body>
     <div class="content">
-      <h2 th:text="${message}">Hello World</h2>
+      <h2>Welcome to the test menu</h2>
+
+      <div th:if="${successMessage}" th:text="${successMessage}"></div>
+      <div th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+      <form th:object="${food}" th:action="@{/home}" th:method="POST" >
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input th:field="*{name}" type="input" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Price</label>
+          <input th:field="*{price}" type="input" name="price" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Food</button>
+      </form>
+
       <table class="table">
         <thead>
           <tr>
